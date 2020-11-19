@@ -27,17 +27,17 @@ public class StudentServiceImplTest {
         student.setClazz(2);
         studentService.save(student);
 
-        Student s = studentService.selectByNumber("SX001");
-        Assert.assertEquals(s.getName(), "张三");
+        Student s1 = studentService.selectByNumber("SX001");
+        Assert.assertEquals(s1.getName(), "张三");
 
-        student.setName("李四");
-        studentService.update(student);
-        s = studentService.selectByNumber("SX001");
-        Assert.assertEquals(s.getName(), "李四");
+        s1.setName("李四");
+        studentService.update(s1);
+        Student s2 = studentService.selectByNumber("SX001");
+        Assert.assertEquals(s2.getName(), "李四");
 
-        studentService.delete(s.getId());
-        s = studentService.selectByNumber("SX001");
-        Assert.assertNull(s);
+        studentService.delete(s2.getId());
+        Student s3 = studentService.selectByNumber("SX001");
+        Assert.assertNull(s3);
     }
 
     @Test
